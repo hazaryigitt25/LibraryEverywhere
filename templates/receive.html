@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container text-center">
+    <h3>Receive Book</h3>
+    <hr>
+    <p>Are you sure you receive this book {{ book.book_name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <p><a href="{% url 'library:dashboard' %}" class="btn btn-danger">No, I did not</a> <button type="submit" class="btn btn-success">Yes, I am</button></p>
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h3>dashboard</h3>
+<a href="{% url 'library:addbook' %}" class="btn btn-primary">Add Book</a>
+<hr>
+<p><small>Note:You can write both sides and you can search with both sides</small></p>
+<form class="d-flex">
+  {% csrf_token %}
+  <input type="text" name = "key_author" class="input-sm" maxlength="64" placeholder="Search by author">
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<br>
+<form class="d-flex">
+  {% csrf_token %}
+  <input type="text" name = "key_book" class="input-sm" maxlength="64" placeholder="Search by book name">
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<br>
+{% if books %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Book Name</th>
+        <th scope="col">Book Author</th>
+        <th scope="col">Avaibility</th>
+        <th scope='col'>Delivery Time</th>
+        <th scope='col'>Sell</th>
+        <th scope='col'>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+      <tbody>
+        <tr>
+            <td><a href="/library/detail/{{book.id}}">{{book.book_name}}</a></td>
+            <td>{{book.book_author}}</td>
+            {% if book.avaible %}
+            <td>Avaible</td>
+            <td>-</td>
+            <td><a href="/library/sell/{{book.id}}" class="btn btn-success">Sell</a></td>
+            {% else %}
+            <td>Not Avaible</td>
+            <td>{{ book.receive_date }}</td>
+            <td><a href="/library/receive/{{book.id}}" class="btn btn-warning">Receive</a></td>
+            {% endif %}
+            <td><a href="/library/delete/{{book.id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </tbody>
+      {% endfor %}
+{% else %}
+<div class="alert alert-danger">
+    There Is No Books Here
+</div>
+{% endif %}
+
+      
+{% endblock body %}
+

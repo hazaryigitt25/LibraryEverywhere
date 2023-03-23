@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="h-100 p-5 text-bg-dark rounded-3">
+    <h2>Visitor Page</h2>
+    <p>You can find the book in libraries which is in your city and if the book is avaible or not just click the button</p>
+    <a href="{% url 'library:visitor' %}" class="btn btn-outline-light">Visitor Page</a>
+</div>
+{% endblock body %}
+

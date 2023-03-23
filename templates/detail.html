@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <h3>{{book.book_name}},{{book.book_author}}</h3>
+            <hr>
+            {% if book.avaible %}
+            <p>Books is avaible right now</p>
+            {% else %}
+            <p>Buyer: {{book.book_name}}</p>
+            <p>Buying Date: {{book.buying_date}}</p>
+            <p>Receive Date: {{book.receive_date}}</p>
+            <p>Buyer Phone: {{book.buyer_phone}}</p>
+            <p>Buyer Email: {{book.buyer_email}}</p>
+            {% endif %}
+            <a href="{% url 'library:dashboard' %}" class="btn btn-primary">Back</a>
+        </div> 
+    </div>
+</div>
+{% endblock body %}

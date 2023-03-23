@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Library App!</h1>
+    <p class="lead">For Libraries, in this website you can check check your books.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'library:library_usage' %}" role="button">How To Use As Library Manager</a>
+    </p>
+    <hr class="display-4">
+    <p class="lead">For Visitors, in this website you can check the books in the libraries.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'library:visitor_usage' %}" role="button">How To Use As Visitor</a>
+    </p>
+</div>
+{% endblock body %}
